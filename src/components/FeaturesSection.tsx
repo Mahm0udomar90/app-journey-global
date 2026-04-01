@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { Lang, t } from '@/lib/i18n';
 import { Moon, Compass, Calendar, MapPin, BookOpen, Clock } from 'lucide-react';
 
@@ -19,24 +20,47 @@ const FeaturesSection = ({ lang }: FeaturesSectionProps) => {
   ];
 
   return (
-    <section id="features" className="py-24 relative" dir={isRtl ? 'rtl' : 'ltr'}>
+    <section id="features" className="py-28 relative" dir={isRtl ? 'rtl' : 'ltr'}>
       <div className="container mx-auto px-6">
-        <h2 className="text-3xl md:text-5xl font-bold text-center text-gradient-gold mb-16">
-          {tr.features.title}
-        </h2>
+        {/* Section header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-20"
+        >
+          <div className="ornament-line mb-6 mx-auto max-w-xs">
+            <span className="text-primary/60 text-lg">✦</span>
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold text-gradient-gold mb-4">
+            {tr.features.title}
+          </h2>
+        </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Feature cards */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {features.map((feature, i) => (
-            <div
+            <motion.div
               key={i}
-              className="group p-8 rounded-2xl bg-glass hover:bg-glass-gold transition-all duration-500 hover:scale-[1.02]"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ delay: i * 0.08, duration: 0.5 }}
+              className="group relative p-8 rounded-2xl bg-glass-premium hover:border-primary/20 transition-all duration-500"
             >
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:glow-gold transition-all">
-                <feature.icon className="w-7 h-7 text-primary" />
+              {/* Hover glow */}
+              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-b from-primary/[0.05] to-transparent pointer-events-none" />
+
+              <div className="relative">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center mb-6 group-hover:shadow-[0_0_30px_hsl(43_75%_55%/0.15)] transition-all duration-500">
+                  <feature.icon className="w-7 h-7 text-primary" strokeWidth={1.5} />
+                </div>
+
+                <h3 className="text-lg font-bold text-foreground mb-2">{feature.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{feature.desc}</p>
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-3">{feature.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{feature.desc}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
