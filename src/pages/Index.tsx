@@ -3,6 +3,7 @@ import { Lang } from '@/lib/i18n';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import FeaturesSection from '@/components/FeaturesSection';
+import ScreenshotsSection from '@/components/ScreenshotsSection';
 import DownloadSection from '@/components/DownloadSection';
 import Footer from '@/components/Footer';
 
@@ -22,6 +23,8 @@ const Index = () => {
       <HeroSection lang={lang} />
       <div className="section-divider mx-auto max-w-4xl" />
       <FeaturesSection lang={lang} />
+      <div className="section-divider mx-auto max-w-4xl" />
+      <ScreenshotsSection lang={lang} />
       <div className="section-divider mx-auto max-w-4xl" />
       <DownloadSection lang={lang} />
       <Footer lang={lang} />

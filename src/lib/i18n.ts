@@ -41,6 +41,10 @@ export const translations = {
         desc: 'أذكار وأدعية مختارة يومياً لراحة البال والسكينة.',
       },
     },
+    screenshots: {
+      title: 'استكشف التطبيق',
+      subtitle: 'تجربة روحانية متكاملة بتصميم أنيق',
+    },
     download: {
       title: 'ابدأ رحلتك الروحانية',
       subtitle: 'حمّل سُكُون الآن واستمتع بتجربة إيمانية متكاملة',
@@ -92,6 +96,10 @@ export const translations = {
         title: 'Daily Dhikr',
         desc: 'Curated daily Dhikr & Quranic verses for calm and guidance.',
       },
+    },
+    screenshots: {
+      title: 'Explore the App',
+      subtitle: 'A complete spiritual experience with elegant design',
     },
     download: {
       title: 'Start Your Spiritual Journey',
