@@ -97,6 +97,10 @@ export const translations = {
         desc: 'Curated daily Dhikr & Quranic verses for calm and guidance.',
       },
     },
+    screenshots: {
+      title: 'Explore the App',
+      subtitle: 'A complete spiritual experience with elegant design',
+    },
     download: {
       title: 'Start Your Spiritual Journey',
       subtitle: 'Download Sukun now and enjoy a complete spiritual experience',
