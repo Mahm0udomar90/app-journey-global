@@ -8,7 +8,7 @@ export const translations = {
       download: 'تحميل',
     },
     hero: {
-      title: 'سُكُون',
+      title: 'سُكُونْ',
       subtitle: 'القبلة والأذان',
       description: 'تجربة روحانية هادئة للصلاة — مواقيت الصلاة، اتجاه القبلة، التقويم الهجري، ومراحل القمر في مكان واحد.',
       downloadNow: 'حمّل الآن',
