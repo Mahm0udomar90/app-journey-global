@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion';
 import { Lang, t } from '@/lib/i18n';
-import phoneMockup from '@/assets/phone-mockup.png';
+
+import screenshot1 from '@/assets/screenshots/screenshot-1.jpg';
+import screenshot3 from '@/assets/screenshots/screenshot-3.jpg';
+import screenshot7 from '@/assets/screenshots/screenshot-7.jpg';
 
 interface HeroSectionProps {
   lang: Lang;
@@ -109,31 +112,91 @@ const HeroSection = ({ lang }: HeroSectionProps) => {
             </motion.div>
           </motion.div>
 
-          {/* Phone mockup */}
+          {/* Floating screenshots showcase */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: 60 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="flex justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 1 }}
+            className="flex justify-center items-center"
           >
-            <div className="relative">
-              {/* Glow ring behind phone */}
-              <div className="absolute inset-[-30px] rounded-full bg-gradient-to-b from-primary/10 via-transparent to-accent/5 blur-2xl animate-pulse-glow" />
+            <div className="relative w-[320px] h-[420px] md:w-[380px] md:h-[500px]">
+              {/* Central glow */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-primary/[0.08] blur-[80px]" />
 
-              {/* Decorative arc */}
-              <div className="absolute inset-[-50px] opacity-10 animate-rotate-slow" style={{ animationDuration: '60s' }}>
+              {/* Back-left screenshot */}
+              <motion.div
+                initial={{ opacity: 0, x: -40, y: 30 }}
+                animate={{ opacity: 1, x: 0, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute -left-4 md:-left-8 top-12 z-[1]"
+              >
+                <motion.div
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+                >
+                  <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.4)] border border-border/20">
+                    <img
+                      src={screenshot3}
+                      alt="Qibla Compass"
+                      className="w-36 md:w-44 h-auto object-cover"
+                      loading="eager"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
+                  </div>
+                </motion.div>
+              </motion.div>
+
+              {/* Center screenshot (main/hero) */}
+              <motion.div
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ delay: 0.4, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute left-1/2 -translate-x-1/2 top-0 z-[3]"
+              >
+                <motion.div
+                  animate={{ y: [0, -12, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                >
+                  <div className="relative rounded-3xl overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.5)] border-2 border-primary/20 glow-gold">
+                    <img
+                      src={screenshot1}
+                      alt="Prayer Times"
+                      className="w-48 md:w-56 h-auto object-cover"
+                      loading="eager"
+                    />
+                  </div>
+                </motion.div>
+              </motion.div>
+
+              {/* Back-right screenshot */}
+              <motion.div
+                initial={{ opacity: 0, x: 40, y: 30 }}
+                animate={{ opacity: 1, x: 0, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute -right-4 md:-right-8 top-16 z-[2]"
+              >
+                <motion.div
+                  animate={{ y: [0, -6, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+                >
+                  <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.4)] border border-border/20">
+                    <img
+                      src={screenshot7}
+                      alt="Moon Phases"
+                      className="w-36 md:w-44 h-auto object-cover"
+                      loading="eager"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
+                  </div>
+                </motion.div>
+              </motion.div>
+
+              {/* Decorative rotating arc */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] opacity-[0.06] animate-rotate-slow pointer-events-none" style={{ animationDuration: '60s' }}>
                 <svg viewBox="0 0 400 400" className="w-full h-full">
                   <circle cx="200" cy="200" r="190" stroke="hsl(43 75% 55%)" strokeWidth="0.5" fill="none" strokeDasharray="4 8" />
                 </svg>
               </div>
-
-              <img
-                src={phoneMockup}
-                alt="Sukun App"
-                width={400}
-                height={400}
-                className="relative w-72 md:w-80 drop-shadow-[0_30px_60px_rgba(0,0,0,0.5)] animate-float"
-              />
             </div>
           </motion.div>
         </div>
