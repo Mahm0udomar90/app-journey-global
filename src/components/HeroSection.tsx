@@ -73,7 +73,7 @@ const HeroSection = ({ lang }: HeroSectionProps) => {
                 </span>
               </motion.div>
 
-              <h1 className="text-6xl md:text-8xl font-black text-gradient-gold leading-[0.9] tracking-tight">
+            <h1 className="text-6xl md:text-8xl font-black leading-[0.9] tracking-tight" style={{ color: 'hsl(43, 75%, 55%)' }}>
                 {tr.hero.title}
               </h1>
               <p className="text-2xl md:text-3xl text-secondary font-semibold">
