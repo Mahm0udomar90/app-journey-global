@@ -10,7 +10,8 @@ const PORT = process.env.PORT || 10000;
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
-app.get('*', (req, res) => {
+// ✅ Express 5: use app.use instead of app.get('*')
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
