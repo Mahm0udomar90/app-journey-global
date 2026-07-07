@@ -8,13 +8,15 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 10000;
 
+// 1. Serve static files from 'dist' FIRST
 app.use(express.static(path.join(__dirname, 'dist')));
 
-// ✅ Express 5: use app.use instead of app.get('*')
-app.use((req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+// 2. SPA fallback: for ANY GET request that doesn't match a static file,
+//    send back index.html so React Router can handle the route
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
