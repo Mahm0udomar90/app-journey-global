@@ -56,10 +56,32 @@ export default function Contact({ lang, onToggleLang }: ContactProps) {
       
       <div className="pt-24 py-12 px-4">
         <div className="max-w-2xl mx-auto">
-          <h1 className="text-3xl font-bold text-center mb-2">{ct.title}</h1>
+          {/* App name and developer - REQUIRED for Google Play */}
+          <div className="text-center mb-8 pb-6 border-b border-border/30">
+            <h1 className="text-2xl font-bold text-gradient-gold mb-1">
+              {isRtl ? 'سُكُونْ' : 'Sukun'}
+            </h1>
+            <p className="text-sm text-muted-foreground">
+              {isRtl ? 'القبلة والأذان' : 'Prayer Times & Qibla'}
+            </p>
+            <p className="text-xs text-muted-foreground mt-1">
+              {isRtl ? 'تطوير: محمود عمر' : 'Developed by: Mahmoud Omar'}
+            </p>
+          </div>
+
+          <h2 className="text-3xl font-bold text-center mb-2">{ct.title}</h2>
           <p className="text-muted-foreground text-center mb-8">
             {ct.subtitle}
           </p>
+
+          {/* Data deletion notice */}
+          <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 mb-6">
+            <p className="text-sm text-foreground/80">
+              {isRtl 
+                ? 'لحذف حسابك وبياناتك من تطبيق سُكُون، يرجى ملء النموذج أدناه واختيار "أرغب في حذف بياناتي".'
+                : 'To delete your account and data from Sukun app, please fill out the form below and select "I want to delete my data".'}
+            </p>
+          </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -132,6 +154,13 @@ export default function Contact({ lang, onToggleLang }: ContactProps) {
             <a href="mailto:sukun.qibla.athan@gmail.com" className="text-primary hover:underline">
               sukun.qibla.athan@gmail.com
             </a>
+          </div>
+
+          {/* Footer with app info - REQUIRED for Google Play */}
+          <div className="mt-12 pt-8 border-t border-border/30 text-center text-sm text-muted-foreground">
+            <p className="font-medium text-foreground">© 2026 Sukun - Prayer Times & Qibla</p>
+            <p className="mt-1">Mahmoud Omar</p>
+            <p className="mt-1">sukun.qibla.athan@gmail.com</p>
           </div>
         </div>
       </div>
