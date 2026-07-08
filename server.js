@@ -50,8 +50,8 @@ app.post('/api/contact', async (req, res) => {
 // Serve static files
 app.use(express.static(path.join(__dirname, 'dist')));
 
-// SPA fallback
-app.get('*', (req, res) => {
+// SPA fallback - Express 5 compatible
+app.get(/.*/, (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
