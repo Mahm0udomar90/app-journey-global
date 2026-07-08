@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Lang, t } from '@/lib/i18n';
 import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import sukunLogo from '@/assets/sukun-logo.png';
 
 interface NavbarProps {
@@ -22,9 +23,10 @@ const Navbar = ({ lang, onToggleLang }: NavbarProps) => {
   }, []);
 
   const links = [
-    { href: '#home', label: tr.nav.home },
-    { href: '#features', label: tr.nav.features },
-    { href: '#download', label: tr.nav.download },
+    { href: '/#home', label: tr.nav.home },
+    { href: '/#features', label: tr.nav.features },
+    { href: '/#download', label: tr.nav.download },
+    { href: '/contact', label: tr.nav.contact || 'تواصل معنا' },
   ];
 
   return (
@@ -40,7 +42,7 @@ const Navbar = ({ lang, onToggleLang }: NavbarProps) => {
       dir={isRtl ? 'rtl' : 'ltr'}
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#home" className="flex items-center gap-3 group">
+        <Link to="/" className="flex items-center gap-3 group">
           <div className="relative">
             <div className="absolute inset-0 rounded-full bg-primary/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
             <img
@@ -54,19 +56,19 @@ const Navbar = ({ lang, onToggleLang }: NavbarProps) => {
           <span className="text-xl font-bold text-gradient-gold tracking-wide">
             {isRtl ? 'سُكُون' : 'SUKUN'}
           </span>
-        </a>
+        </Link>
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-1">
           {links.map(link => (
-            <a
+            <Link
               key={link.href}
-              href={link.href}
+              to={link.href}
               className="relative px-5 py-2 text-sm text-foreground/60 hover:text-primary transition-colors duration-300 group"
             >
               {link.label}
               <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-px bg-primary group-hover:w-3/4 transition-all duration-300" />
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -75,7 +77,7 @@ const Navbar = ({ lang, onToggleLang }: NavbarProps) => {
             onClick={onToggleLang}
             className="px-5 py-2 rounded-full border border-primary/20 text-primary text-sm font-semibold hover:bg-primary/10 transition-all duration-300"
           >
-            {isRtl ? 'English' : 'عربي'}
+            {tr.nav.language}
           </button>
 
           {/* Mobile menu button */}
@@ -99,14 +101,14 @@ const Navbar = ({ lang, onToggleLang }: NavbarProps) => {
           >
             <div className="container mx-auto px-6 py-4 flex flex-col gap-3">
               {links.map(link => (
-                <a
+                <Link
                   key={link.href}
-                  href={link.href}
+                  to={link.href}
                   onClick={() => setMobileOpen(false)}
                   className="py-2 text-foreground/70 hover:text-primary transition-colors"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </div>
           </motion.div>

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Lang } from '@/lib/i18n';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
@@ -7,10 +6,12 @@ import ScreenshotsSection from '@/components/ScreenshotsSection';
 import DownloadSection from '@/components/DownloadSection';
 import Footer from '@/components/Footer';
 
-const Index = () => {
-  const [lang, setLang] = useState<Lang>('ar');
-  const toggleLang = () => setLang(prev => prev === 'ar' ? 'en' : 'ar');
+interface IndexProps {
+  lang: Lang;
+  onToggleLang: () => void;
+}
 
+const Index = ({ lang, onToggleLang }: IndexProps) => {
   return (
     <div className="min-h-screen bg-background grain relative">
       {/* Ambient background effects */}
@@ -19,7 +20,7 @@ const Index = () => {
         <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-accent/[0.03] blur-[120px]" />
       </div>
 
-      <Navbar lang={lang} onToggleLang={toggleLang} />
+      <Navbar lang={lang} onToggleLang={onToggleLang} />
       <HeroSection lang={lang} />
       <div className="section-divider mx-auto max-w-4xl" />
       <FeaturesSection lang={lang} />
